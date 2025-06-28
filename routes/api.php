@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->post('/logout', [AuthenticationController::cl
 Route::middleware('auth:sanctum')->group(function() {
 
     Route::get('quiz', [ShowAdsController::class, 'quiz']);
+    Route::get('quizs', [ShowAdsController::class, 'quizs']);
 
     Route::post('/ads', [ShowAdsController::class, 'ads']);
 

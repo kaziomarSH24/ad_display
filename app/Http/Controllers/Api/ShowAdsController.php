@@ -77,6 +77,22 @@ public function views(Request $request)
             'independentAd' => $independentAd,
         ]);
     }
+    public function quizs(){
+        $quizzes = Quiz::with(['answers' => function ($query) {
+            $query->inRandomOrder();
+        }])
+        ->orderBy('quiz_no')
+        ->get()
+        ->groupBy('quiz_no');
+
+        $independentAd = IndependentAd::where('id', 1)->first();
+
+        return response()->json([
+            'status' => 200,
+            'quizzes' => $quizzes,
+            'independentAd' => $independentAd,
+        ]);
+    }
 
 
 
